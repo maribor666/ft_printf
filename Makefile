@@ -44,7 +44,6 @@ NAME = libftprintf.a
 
 all: $(NAME)
 $(NAME): $(OBJECTS)
-	
 	@ar rc $(NAME) $(OBJECTS) 
 	@echo "///linking of *.o files done|||"
 
