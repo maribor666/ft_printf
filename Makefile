@@ -47,7 +47,7 @@ $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS) 
 
 %.o: %.c
-	@gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $< -I .
 
 clean:
 	@rm -f $(OBJECTS)
