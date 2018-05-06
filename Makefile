@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	ft_atoi.c \
+SRCS =		ft_atoi.c \
 		ft_count_num.c \
 		ft_itoa.c \
 		ft_putstr.c \
@@ -32,8 +32,6 @@ SRCS =	ft_atoi.c \
 		print_c.c \
 		print_s.c \
 		print_percent.c \
-
-
 
 OBJECTS = $(SRCS:.c=.o)
 
