@@ -54,7 +54,7 @@ $(NAME): $(OBJECTS)
 clean:
 	@rm -f $(OBJECTS)
 
-fclean: clean $(NAME)
+fclean: clean
 	@rm  -f $(NAME)
 
 re: fclean all
