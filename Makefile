@@ -41,17 +41,17 @@ FLAGS = -Wall -Werror -Wextra
 NAME = libftprintf.a
 
 $(NAME): $(OBJECTS)
-	@ar rc $(NAME) $(OBJECTS) 
+	ar rc $(NAME) $(OBJECTS) 
 	
 all: $(NAME)
 
 %.o: %.c
-	@gcc $(FLAGS) -o $@ -c $<
+	gcc $(FLAGS) -o $@ -c $< -I .
 
 clean:
-	@rm -f $(OBJECTS)
+	rm -f $(OBJECTS)
 
 fclean: clean 
-	@rm  -f $(NAME)
+	rm  -f $(NAME)
 
 re: fclean all
