@@ -46,6 +46,9 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS) 
 
+$(OBJECTS):
+	@gcc $(FLAGS) -c $(OBJECTS) -I .
+
 %.o: %.c
 	@gcc $(FLAGS) -o $@ -c $< -I .
 
