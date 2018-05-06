@@ -40,10 +40,10 @@ FLAGS = -Wall -Werror -Wextra
 
 NAME = libftprintf.a
 
+all: $(NAME)
+
 $(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS) 
-	
-all: $(NAME)
 
 %.o: %.c
 	gcc $(FLAGS) -o $@ -c $< -I .
