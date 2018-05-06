@@ -40,13 +40,12 @@ FLAGS = -Wall -Werror -Wextra
 
 NAME = libftprintf.a
 
-all: $(NAME)
-
-
 $(NAME): $(OBJECTS)
 	
 	@ar rc $(NAME) $(OBJECTS) 
 	@echo "///linking of *.o files done|||"
+	
+all: $(NAME)
 
 %.o: %.c
 	@gcc $(FLAGS) -c $<
