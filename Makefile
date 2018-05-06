@@ -45,22 +45,22 @@ OBJ_DIR = objs/
 all: $(NAME)
 
 $(NAME): $(OBJ)
- @ar rc $(NAME) $(OBJ)
- @ranlib $(NAME)
- @echo "##### Printf Lib created #####"
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo "##### Printf Lib created #####"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
- @mkdir -p $(OBJ_DIR)
- @echo "##### Linking" [ $@ ] " #####"
- @gcc $(FLAGS) -o $@ -c $< $(INC)
+	@mkdir -p $(OBJ_DIR)
+	@echo "##### Linking" [ $@ ] " #####"
+	@gcc $(FLAGS) -o $@ -c $< $(INC)
 
 clean:
- @rm -f $(OBJ)
- @echo "##### Removed object files #####"
+	@rm -f $(OBJ)
+	@echo "##### Removed object files #####"
 
 fclean: clean
- @rm -f $(NAME)
- @echo "##### Removed libftprintf.a #####"
+	@rm -f $(NAME)
+	@echo "##### Removed libftprintf.a #####"
 
 re: fclean all
 
