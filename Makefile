@@ -48,7 +48,7 @@ $(NAME): $(OBJECTS)
 all: $(NAME)
 
 %.o: %.c
-	@gcc $(FLAGS) -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 clean:
 	@rm -f $(OBJECTS)
