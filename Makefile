@@ -47,13 +47,14 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
 
-$(OBJECTS):
-	@gcc $(FLAGS) -c $(OBJECTS) -I .
+%.o: %.c
+	@gcc $(FLAGS) -o $@ -c $< -I .
+
 clean:
 	@rm -f $(OBJECTS)
 
 fclean: clean
-	@rm  -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
