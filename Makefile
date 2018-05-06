@@ -33,10 +33,7 @@ SRCS =	ft_atoi.c \
 		print_s.c \
 		print_percent.c \
 
-
-
 OBJECTS = $(SRCS:.c=.o)
-
 
 FLAGS = -Wall -Werror -Wextra
 
