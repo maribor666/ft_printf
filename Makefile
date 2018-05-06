@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 FLAGS = -Wall -Wextra -Werror
-INC =  -I./includes
+INC =  -I .
 
 SRC_NAME = ft_atoi.c \
 		ft_count_num.c \
