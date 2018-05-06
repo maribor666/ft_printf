@@ -49,7 +49,6 @@ all: $(NAME)
 
 %.o: %.c
 	@gcc $(FLAGS) -c $<
-	@echo "///*.o files done|||"
 
 clean:
 	@rm -f $(OBJECTS)
