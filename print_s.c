@@ -1,5 +1,5 @@
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int     print_s(t_modes mods, wchar_t *arg)
 {

@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int     print_c(t_modes mods, int arg)
 {

@@ -1,5 +1,5 @@
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 
 int     print_u(t_modes mods, size_t arg)

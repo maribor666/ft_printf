@@ -2,7 +2,7 @@
 // Created by Oleh SPEKA on 4/23/18.
 //
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int     print_o(t_modes mods, size_t arg)
 {
