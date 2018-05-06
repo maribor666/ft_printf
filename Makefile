@@ -43,7 +43,10 @@ FLAGS = -Wall -Werror -Wextra
 NAME = libftprintf.a
 
 all: $(NAME)
+
+
 $(NAME): $(OBJECTS)
+	
 	@ar rc $(NAME) $(OBJECTS) 
 	@echo "///linking of *.o files done|||"
 
@@ -55,7 +58,7 @@ clean:
 	@rm -f $(OBJECTS)
 	@echo "///*.o files deleted|||"
 
-fclean: clean
+fclean: clean $(NAME)
 	@rm  -f $(NAME)
 	@echo "///libftprintf.a deleted"
 

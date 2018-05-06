@@ -49,7 +49,7 @@ char	**ft_strsplit(char const *s, char c);
 int     print_o(t_modes mods, size_t arg);
 size_t  caster_o(t_modes mods, size_t arg);
 char    *make_prefix_o(t_modes mods, size_t arg);
-char    *make_value_o(t_modes mods, size_t arg);
+char *make_value_o(t_modes mods, size_t arg, char *prefix);
 
 int     print_x(t_modes mods, size_t arg);
 char    *to_lower_str(char *value);
@@ -73,8 +73,12 @@ char    *make_padding_c(t_modes mods, int pref_len, int value_len);
 
 int     print_s(t_modes mods, wchar_t *arg);
 
-int     count_len_us(wchar_t *arg);
+int     count_len_us(wchar_t *arg, int prec);
+int     count_len_wo_prec(wchar_t *arg);
+
+int     print_us_prec(wchar_t *arg, int prec);
 int     print_us(wchar_t *arg);
+
 int     format_print_us(t_modes mods, wchar_t *arg);
 
 char    *make_value_s(t_modes mods, char *arg);

@@ -41,41 +41,64 @@ int     format_print_us(t_modes mods, wchar_t *arg)
 {
     char    *padding;
     int     res;
-    char    filler;
 
-    filler = ' ';
     res = 0;
-//    if (mods.precision < count_len_us( arg))
-//    {
-//        if (ft_strchr(mods.flags, '0') != NULL)
-//            filler = '0';
-//        padding = create_and_fill(mods.width, filler);
-//        res += ft_strlen(padding);
-//        ft_putstr(padding);
-//        free(padding);
-//        return (res);
-//    }
-    padding = make_padding_s(mods, count_len_us(arg));
+    padding = make_padding_s(mods, count_len_us(arg, mods.precision));
     if (ft_strchr(mods.flags,'-') != NULL)
     {
-        print_us(arg);
+        if (mods.precision != -1)
+            res += print_us_prec(arg, mods.precision);
+        else
+            res += print_us(arg);
         ft_putstr(padding);
         res += ft_strlen(padding);
-        res += count_len_us(arg);
         free(padding);
     }
     else
     {
         ft_putstr(padding);
-        print_us(arg);
         res += ft_strlen(padding);
-        res += count_len_us(arg);
+        if (mods.precision != -1)
+            res += print_us_prec(arg, mods.precision);
+        else
+            res += print_us(arg);
         free(padding);
     }
     return (res);
 }
 
-int     count_len_us( wchar_t *arg)
+int     count_len_us(wchar_t *arg, int prec)
+{
+    int res;
+    int i;
+    int *uchar;
+
+    i = 0;
+    res = 0;
+    if (prec == -1)
+        return (count_len_wo_prec(arg));
+    while (arg[i] != '\0' && prec > 0)
+    {
+        if (arg[i] <= 127)
+        {
+            i++;
+            res++;
+            prec--;
+        }
+        else
+        {
+            uchar = make_uchar_for_s((int)(arg[i]));
+            prec -= count_bytes_in_intarr(uchar);
+            if (prec >= 0)
+                res += count_bytes_in_intarr(uchar);
+            free(uchar);
+            i++;
+        }
+    }
+    return (res);
+}
+
+int     count_len_wo_prec(wchar_t *arg)
 {
     int res;
     int i;
@@ -101,6 +124,39 @@ int     count_len_us( wchar_t *arg)
     return (res);
 }
 
+int     print_us_prec(wchar_t *arg, int prec)
+{
+    int res;
+    int i;
+    int *uchar;
+
+    i = 0;
+    res = 0;
+    while (arg[i] != '\0' && prec > 0)
+    {
+        if (arg[i] <= 127)
+        {
+            ft_putchar((char)arg[i]);
+            i++;
+            res++;
+            prec--;
+        }
+        else {
+            uchar = make_uchar_for_s((int) (arg[i]));
+            prec -= count_bytes_in_intarr(uchar);
+            if (prec >= 0)
+            {
+                res += count_bytes_in_intarr(uchar);
+                write_arr_of_bits(uchar);
+            }
+            else
+                free(uchar);
+            i++;
+        }
+    }
+    return (res);
+}
+
 int     print_us(wchar_t *arg)
 {
     int res;
@@ -117,9 +173,8 @@ int     print_us(wchar_t *arg)
             i++;
             res++;
         }
-        else
-        {
-            uchar = make_uchar_for_s((int)(arg[i]));
+        else {
+            uchar = make_uchar_for_s((int) (arg[i]));
             res += count_bytes_in_intarr(uchar);
             write_arr_of_bits(uchar);
             i++;
@@ -128,7 +183,8 @@ int     print_us(wchar_t *arg)
     return (res);
 }
 
-int     *make_uchar_for_s(int c) {
+int     *make_uchar_for_s(int c)
+{
     char *bits_str;
     char *mask;
     char *after_mask_imp;
@@ -141,13 +197,6 @@ int     *make_uchar_for_s(int c) {
     arr_of_bits = ft_strsplit(after_mask_imp, ' ');
     free(after_mask_imp);
     res = conv_arr(arr_of_bits, after_mask_imp);
-
-//    int i = 0;
-//        while (res[i] != -1)
-//        {
-//            printf("%d\n", res[i]);
-//            i++;
-//        }
     return (res);
 }
 

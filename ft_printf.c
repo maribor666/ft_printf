@@ -127,18 +127,18 @@ int     ft_printf(const char *str, ...)
     return (res);
 }
 
-#include <limits.h>
-#include <locale.h>
+//#include <limits.h>
+//#include <locale.h>
 //
 //int main(void)
 //{
 //    int r1;
 //    int r2;
 //    char* l = setlocale(LC_ALL, "");
-//    char c;
 //
-//    r1 = ft_printf("%");
-//       r2 = printf("%");
+//       r1 = printf("|%4.15S|\n", L"我是一只猫。");
+//    r2 = ft_printf("|%4.15S|\n", L"我是一只猫。");
+//
 //    printf("r1 = %d; r2 = %d\n", r1, r2);
 //    //system("leaks PRINTF");
 //    system("leaks PRINTF | grep Process | tail -n 1");
@@ -147,11 +147,5 @@ int     ft_printf(const char *str, ...)
 //
 //    return 0;
 //}
-//
-////>>>> 79_precision_mixed_with_flags [FAIL] ........FF [FAIL] octal_precision_and_flagSharp -> printf("%#.3o", 1)
 
-
-
-
-
-
+//assert_printf("%4.15S", L"我是一只猫。");

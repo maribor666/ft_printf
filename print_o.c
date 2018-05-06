@@ -17,7 +17,7 @@ int     print_o(t_modes mods, size_t arg)
 
     arg = caster_o(mods, arg);
     prefix = make_prefix_o(mods, arg);
-    value = make_value_o(mods, arg);
+    value = make_value_o(mods, arg, prefix);
     padding = make_padding(mods,  prefix, value);
     if (mods.precision != -1 && ft_strchr(mods.flags, '0') != NULL)
         *ft_strchr(mods.flags, '0') = '_';
@@ -79,7 +79,7 @@ char *make_prefix_o(t_modes mods, size_t arg)
     return (ft_strdup(""));
 }
 
-char *make_value_o(t_modes mods, size_t arg)
+char *make_value_o(t_modes mods, size_t arg, char *prefix)
 {
     char *value;
     char *p;
@@ -92,9 +92,10 @@ char *make_value_o(t_modes mods, size_t arg)
     {
         if (mods.precision >= (int)ft_strlen(num))
         {
-            p = create_and_fill(mods.precision - ft_strlen(num), '0');
+            p = create_and_fill(mods.precision - ft_strlen(num) - ft_strlen(prefix), '0');
             value = ft_strjoin(p, num);
             free(p);
+            free(num);
         }
         else
             return (num);
