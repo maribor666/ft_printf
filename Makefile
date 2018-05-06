@@ -53,7 +53,6 @@ all: $(NAME)
 
 clean:
 	@rm -f $(OBJECTS)
-	@echo "///*.o files deleted|||"
 
 fclean: clean 
 	@rm  -f $(NAME)
