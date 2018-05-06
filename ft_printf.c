@@ -1,4 +1,4 @@
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 t_modes write_mods(const char *s, t_modes mods)
 {

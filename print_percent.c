@@ -1,6 +1,6 @@
 
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 int     print_percent(t_modes mods)
 {

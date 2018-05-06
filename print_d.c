@@ -1,4 +1,4 @@
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 int    print_d(t_modes mods, ssize_t arg)
 {
