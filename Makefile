@@ -43,8 +43,6 @@ FLAGS = -Wall -Werror -Wextra
 NAME = libftprintf.a
 
 all: $(NAME)
-
-
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS) 
 
