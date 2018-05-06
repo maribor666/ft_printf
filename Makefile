@@ -10,11 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-FLAGS = -Wall -Wextra -Werror
-INC =  -I .
-
-SRC_NAME = ft_atoi.c \
+SRCS =	ft_atoi.c \
 		ft_count_num.c \
 		ft_itoa.c \
 		ft_putstr.c \
@@ -36,32 +32,30 @@ SRC_NAME = ft_atoi.c \
 		print_c.c \
 		print_s.c \
 		print_percent.c \
-		
-OBJ_NAME = $(SRC_NAME:.c=.o)
-OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))
-SRC_DIR = srcs/
-OBJ_DIR = objs/
+
+
+
+OBJECTS = $(SRCS:.c=.o)
+
+
+FLAGS = -Wall -Werror -Wextra
+
+NAME = libftprintf.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
-	@echo "##### Printf Lib created #####"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	@echo "##### Linking" [ $@ ] " #####"
-	@gcc $(FLAGS) -o $@ -c $< $(INC)
+$(NAME): $(OBJECTS)
+	@ar rc $(NAME) $(OBJECTS) 
+
+%.o: %.c
+	@gcc $(FLAGS) -o $@ -c $<
 
 clean:
-	@rm -f $(OBJ)
-	@echo "##### Removed object files #####"
+	@rm -f $(OBJECTS)
 
-fclean: clean
-	@rm -f $(NAME)
-	@echo "##### Removed libftprintf.a #####"
+fclean: clean $(NAME)
+	@rm  -f $(NAME)
 
 re: fclean all
-
 .PHONY: all clean fclean re
