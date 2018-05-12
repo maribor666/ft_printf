@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-static	ssize_t	count_size(size_t n)
+static	ssize_t		count_size(size_t n)
 {
-	ssize_t         buff;
+	ssize_t			buff;
 	ssize_t			size;
 
 	size = 0;
@@ -31,7 +31,7 @@ static	ssize_t	count_size(size_t n)
 	return (size + 1);
 }
 
-static char	*write_str(char *res, size_t i, size_t buff)
+static char			*write_str(char *res, size_t i, size_t buff)
 {
 	while (buff != 0)
 	{
@@ -42,16 +42,16 @@ static char	*write_str(char *res, size_t i, size_t buff)
 	return (res);
 }
 
-char		*ft_itoa(ssize_t n)
+char				*ft_itoa(ssize_t n)
 {
-    size_t          buff;
-	char            *res;
+	size_t			buff;
+	char			*res;
 	ssize_t			i;
 
 	i = count_size(n) - 2;
 	buff = n;
-    if (n * 2 == 0 && n != 0)
-        return (ft_strdup("9223372036854775808"));
+	if (n * 2 == 0 && n != 0)
+		return (ft_strdup("9223372036854775808"));
 	res = (char*)malloc(sizeof(char) * count_size(n));
 	if (n == 0)
 	{

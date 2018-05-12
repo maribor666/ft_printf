@@ -12,15 +12,13 @@
 
 #include "ft_printf.h"
 
-static	int	count_size(size_t n, size_t base)
+static	int		count_size(size_t n, size_t base)
 {
-	size_t	buff;
+	size_t			buff;
 	int				size;
 
 	size = 0;
 	buff = (size_t)n;
-//	if (buff < 0)
-//		size++;
 	if (n == 0)
 		return (2);
 	while (buff != 0)
@@ -31,7 +29,7 @@ static	int	count_size(size_t n, size_t base)
 	return (size + 1);
 }
 
-static char	*write_str(char *res, int i, size_t buff, size_t base)
+static char		*write_str(char *res, int i, size_t buff, size_t base)
 {
 	char letter;
 
@@ -51,9 +49,9 @@ static char	*write_str(char *res, int i, size_t buff, size_t base)
 	return (res);
 }
 
-char		*ft_itoabase(size_t n, int base)
+char			*ft_itoabase(size_t n, int base)
 {
-	size_t          buff;
+	size_t			buff;
 	char			*res;
 	int				i;
 
@@ -64,11 +62,6 @@ char		*ft_itoabase(size_t n, int base)
 		return (NULL);
 	if (n == 0)
 		return (ft_strdup("0"));
-//	if (n < 0)
-//	{
-//		res[0] = '-';
-//		buff = -buff;
-//	}
 	res[count_size(n, base) - 1] = '\0';
 	res = write_str(res, i, buff, base);
 	return (res);

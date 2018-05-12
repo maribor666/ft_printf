@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_p.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ospeka <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/12 16:00:09 by ospeka            #+#    #+#             */
-/*   Updated: 2018/05/12 16:00:22 by ospeka           ###   ########.fr       */
+/*   Created: 2017/11/06 17:33:27 by ospeka            #+#    #+#             */
+/*   Updated: 2017/11/06 17:33:29 by ospeka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			print_p(t_modes mods, size_t arg)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	char	*prefix;
-	char	*value;
-	char	*padding;
-	char	*res;
-	int		len;
+	size_t len1;
+	size_t len2;
+	size_t i;
 
-	prefix = ft_strdup("0x");
-	value = make_value_x(mods, arg);
-	value = to_lower_str(value);
-	padding = make_padding(mods, prefix, value);
-	res = make_res_d(mods.flags, prefix, padding, value);
-	ft_putstr(res);
-	free(prefix);
-	free(padding);
-	free(value);
-	len = (int)ft_strlen(res);
-	free(res);
-	return (len);
+	i = 0;
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (len1 > len2)
+		return (1);
+	if (len2 > len1)
+		return (-1);
+	while (i < len1)
+	{
+		if (s1[i] == s2[i])
+			i++;
+		else
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+	return (0);
 }

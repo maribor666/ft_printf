@@ -24,6 +24,8 @@ SRCS =	ft_atoi.c \
 		ft_strsplit.c \
 		ft_putchar.c \
 		ft_printf.c \
+		ft_strcmp.c \
+		ft_isdigit.c \
 		print_d.c \
 		print_o.c \
 		print_x.c \
@@ -31,9 +33,14 @@ SRCS =	ft_atoi.c \
 		print_p.c \
 		print_c.c \
 		print_s.c \
-		print_percent.c \
+		make_uc.c \
+		help_funcs.c \
+		help_funcs2.c \
+		write_mods.c \
+		print_us.c \
 
 OBJECTS = $(SRCS:.c=.o)
+
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -41,18 +48,22 @@ NAME = libftprintf.a
 
 all: $(NAME)
 
+
 $(NAME): $(OBJECTS)
-	@ar rc $(NAME) $(OBJECTS)
+	
+	@ar rc $(NAME) $(OBJECTS) 
+	@echo "///linking of *.o files done|||"
 
 %.o: %.c
-	@gcc $(FLAGS) -o $@ -c $< -I .
+	@gcc $(FLAGS) -c $<
+	@echo "///*.o file done|||"
 
 clean:
 	@rm -f $(OBJECTS)
+	@echo "///*.o files deleted|||"
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm  -f $(NAME)
+	@echo "///libftprintf.a deleted"
 
 re: fclean all
-
-.PHONY: all clean fclean re
